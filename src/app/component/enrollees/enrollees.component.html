@@ -1,0 +1,25 @@
+<table class="table-fill">
+  <thead>
+    <tr>
+      <th class="text-left">Id</th>
+      <th class="text-left">Name</th>
+      <th class="text-left">Date of Birth</th>
+      <th class="text-left">Active</th>
+      <th class="text-left"></th>
+    </tr>
+  </thead>
+  <tbody class="table-hover">
+    <tr *ngFor="let enrollee of enrollees">
+      <td class="text-left">{{enrollee.id}}</td>
+      <td class="text-left">{{enrollee.name}}</td>
+      <td class="text-left">{{enrollee.dateOfBirth | date}}</td>
+      <td class="text-left">
+        <p class="status-box" *ngIf="enrollee.active">Yes</p>
+        <p class="status-box" *ngIf="!enrollee.active">No</p>
+      </td>
+      <td class="text-left">
+        <a class="edit-button" routerLink="/enrollee/{{enrollee.id}}">Edit</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
