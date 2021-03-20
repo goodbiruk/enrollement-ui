@@ -105,3 +105,7 @@ input[type=submit]:hover {
   color: red;
   margin: 0px 0 15px 0;
 }
+
+.button-disabled {
+  opacity: 0.5;
+}

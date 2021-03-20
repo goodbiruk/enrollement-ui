@@ -40,13 +40,15 @@ export class EnrolleeComponent implements OnInit {
   setUpForm(): void {
     this.enrolleeForm = this.formBuilder.group({
       id: [this.enrollee.id, Validators.required],
-      name: [this.enrollee.name, [Validators.required, Validators.min(0)]],
+      name: [this.enrollee.name, [Validators.required, Validators.min(1)]],
       dateOfBirth: [this.enrollee.dateOfBirth],
       active: [this.enrollee.active, Validators.required]
     });
   }
 
   onSubmit(): void {
+    if (this.enrolleeForm.invalid) return;
+
     this.enrolleeService.updateEnrollee(this.enrolleeForm.value).subscribe(
       value => {
         this.successMessage = 'Successfully updated enrollee!';
@@ -56,5 +58,14 @@ export class EnrolleeComponent implements OnInit {
         this.errorMessage = error;
       }
     );
+
+    this.removeMessage();
+  }
+
+  removeMessage() {
+    setTimeout(() => {
+      this.successMessage = null;
+      this.errorMessage = null;
+    }, 5000);
   }
 }

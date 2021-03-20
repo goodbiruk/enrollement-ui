@@ -28,7 +28,8 @@
       </label>
     </div>
 
-    <input id="submit-button" type="submit" [disabled]="!enrolleeForm.valid" value="Submit">
+    <input id="submit-button" type="submit"
+      [ngClass]="{'button-disabled': !enrolleeForm.valid}" value="Submit">
 
     <div *ngIf="successMessage != null" class="message-success">
       {{successMessage}}
